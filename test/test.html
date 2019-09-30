@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test strg.ts</title>
+  <div id="results">
+
+  </div>
+</head>
+<body>
+
+
+<script src="test_bundle.js"></script>
+
+<script>
+const result = mainTest()
+const resultsEl = document.getElementById('results')
+
+const totalOk = result.reduce((acc, storage) => {
+  const storageResult = storage.tests.reduce((acc2, test) => {
+    return acc2 && test.ok
+  }, true)
+  return acc && storageResult
+}, true)
+
+const totalResultEl = document.createElement('h2')
+totalResultEl.innerText = totalOk ? 'ALL TESTS PASSED' : 'SOME TESTS FAILED'
+totalResultEl.setAttribute('style', 'padding: 1rem; color: white; background-color: ' + (totalOk ? 'green' : 'red') + '')
+resultsEl.append(totalResultEl)
+
+for (const storage of result) {
+  const storageResultEl = document.createElement('div')
+  console.log('result for', storage.store.name, storage.tests)
+
+  const storageHeader = document.createElement('h3')
+  storageHeader.innerText = storage.store.name
+  storageResultEl.append(storageHeader)
+
+  storage.tests.forEach(test => {
+    const p = document.createElement('p')
+
+    const nameEl = document.createElement('span')
+    nameEl.innerText = test.name + ' '
+
+    const resultEl = document.createElement('span')
+    resultEl.innerText = test.ok ? ' OK ' : ' FAIL '
+    resultEl.setAttribute('style', 'color: white; background-color: ' + (test.ok ? 'green' : 'red') + '')
+
+    p.append(nameEl, resultEl)
+    storageResultEl.append(p)
+  })
+  const hr = document.createElement('hr')
+  resultsEl.append(storageResultEl, hr)
+
+}
+</script>
+</body>
+</html>

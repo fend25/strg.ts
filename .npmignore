@@ -1,0 +1,6 @@
+tsconfig.json
+.idea
+npm
+test
+*.tgz
+*.log

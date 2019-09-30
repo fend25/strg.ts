@@ -1,0 +1,23 @@
+{
+  "name": "strg.ts",
+  "version": "0.0.1",
+  "description": "A unified module to work with localStorage, sessionStorage and cookie with the same API",
+  "main": "strg.js",
+  "types": "strg.d.ts",
+  "author": "Alex Saft <fend25>",
+  "license": "MIT",
+  "repository": "https://github.com/fend25/strg.ts",
+  "scripts": {
+    "build": "tsc strg.ts",
+    "test": "tsc test/test.ts && browserify test/test.js -o test/test_bundle.js && echo Now, open test/test.html in any browser and check the result"
+  },
+  "dependencies": {
+    "js-cookie": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^2.2.2",
+    "@types/node": "^12.7.8",
+    "browserify": "^16.5.0",
+    "typescript": "^3.6.3"
+  }
+}
