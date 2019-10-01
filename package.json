@@ -1,6 +1,6 @@
 {
   "name": "strg.ts",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "A unified module to work with localStorage, sessionStorage and cookie with the same API",
   "main": "strg.js",
   "types": "strg.d.ts",
